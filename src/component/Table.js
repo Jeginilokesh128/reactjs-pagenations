@@ -4,7 +4,7 @@ import {tabledetails} from "../component/tabledata";
 const Pagenation=lazy(()=>{
   return import("../component/pagenation/Pagenation")
 })
-export default function Tabledata() {
+ function Tabledata() {
    console.log("Tabledata componet");
   const[page, setPage] = useState(1);
    const [pagelimt, setPagelimit] = useState(5);
@@ -44,3 +44,4 @@ export default function Tabledata() {
     </div>
   );
 }
+export default React.memo(Tabledata);

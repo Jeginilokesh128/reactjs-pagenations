@@ -1,5 +1,5 @@
 
-import React,{lazy,Suspense} from "react"
+import React, { lazy, Suspense, useState } from "react";
 import './App.css';
   let Tabledata = lazy(() => {
     return import("./component/Table");
@@ -7,6 +7,11 @@ import './App.css';
 
 
 function App() {
+     const [increment, setIncrement] = useState(1);
+    const incrementfunction = () => {
+     
+      setIncrement(increment + 1);
+    };
   console.log("app componet")
 
   return (
@@ -15,9 +20,15 @@ function App() {
       <Suspense>
         <Tabledata />
       </Suspense>
-     
+      <button
+        onClick={() => {
+          incrementfunction();
+        }}
+      >
+       Parent componet
+      </button>
     </div>
   );
 }
 
-export default App;
+export default React.memo(App);

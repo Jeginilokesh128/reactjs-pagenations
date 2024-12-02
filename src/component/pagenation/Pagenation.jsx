@@ -1,9 +1,8 @@
 import React ,{useState}from 'react'
 
-export default function Pagenation() {
+ function Pagenation() {
   const[increment,setIncrement]=useState(1)
   const incrementfunction=()=>{
-    // inceremnt=inceremnt+1 const will not support for assing the value
     setIncrement(increment+1);
   }
    console.log("Pagenation componet");
@@ -45,3 +44,5 @@ export default function Pagenation() {
     </div>
   );
 }
+
+export default React.memo(Pagenation);
