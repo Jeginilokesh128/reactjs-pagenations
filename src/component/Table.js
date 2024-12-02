@@ -1,20 +1,14 @@
-import React,{useState} from "react";
+import React,{useState,lazy,Suspense} from "react";
 import {tabledetails} from "../component/tabledata";
 
-// pagelimit
-// page
-//for holding two differnt values we use two diffent state varible
-
-
-//this page limiet and page value we will update thoufght the event 
+const Pagenation=lazy(()=>{
+  return import("../component/pagenation/Pagenation")
+})
 export default function Tabledata() {
+   console.log("Tabledata componet");
   const[page, setPage] = useState(1);
    const [pagelimt, setPagelimit] = useState(5);
-  //    let arraydata=[]
-  //  for(let i=(page-1)*pagelimt;i<pagelimt*page;i++){
-  //   console.log(i)
-  //   let arraydata.push(tabledetails[i])
-  //  }
+
   return (
     <div>
       <table className="table">
@@ -28,7 +22,7 @@ export default function Tabledata() {
         </thead>
         <tbody className="table-group-divider">
           {tabledetails
-            .slice((page - 1)*pagelimt, page*pagelimt)
+            .slice((page - 1) * pagelimt, page * pagelimt)
             .map((item, index) => {
               return (
                 <>
@@ -44,6 +38,9 @@ export default function Tabledata() {
             })}
         </tbody>
       </table>
+      <Suspense>
+        <Pagenation />
+      </Suspense>
     </div>
   );
 }

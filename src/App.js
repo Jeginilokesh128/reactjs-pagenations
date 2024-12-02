@@ -7,6 +7,7 @@ import './App.css';
 
 
 function App() {
+  console.log("app componet")
 
   return (
     <div className="App">
